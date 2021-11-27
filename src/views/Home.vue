@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+      <HomeTemplate :products="products"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import {ref} from 'vue'
+import {HomeTemplate} from '@/components/template'
+import * as mock from '@/mock/mock.js'
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    HomeTemplate
   },
+  setup(){
+    const products = ref([]);
+
+    function init(){
+      products.value = mock.produtos
+    }
+    init();
+
+    return{
+      products
+    }
+  }
 };
 </script>
