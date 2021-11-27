@@ -27,10 +27,6 @@ import {Card} from '@/components/organisms'
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-evenly;
-
-        // .card{
-        //     flex: 0 0 350px;
-        // }
     }
 }
 

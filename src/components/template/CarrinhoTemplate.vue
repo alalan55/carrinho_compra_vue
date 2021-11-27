@@ -1,6 +1,6 @@
 <template>
   <div class="home-template">
-    <div class="description"  v-if="!products.length <= 0" >
+    <div class="description" v-if="!products.length <= 0">
       <div class="title">
         <span>Carrinho</span>
       </div>
@@ -34,26 +34,23 @@
     </div>
 
     <div class="total" v-if="!products.length <= 0">
-        <div class="title-total">
-            <span>Valor Total:</span>
-        </div>
-        <div class="valor-total">
-            <span>{{totalProducts}}</span>
-        </div>
+      <div class="title-total">
+        <span>Valor Total:</span>
+      </div>
+      <div class="valor-total">
+        <span>{{ totalProducts }}</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { ContainerCards } from "@/components/bosons";
-import {  computed, ref } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 export default {
   components: {
     ContainerCards,
-  },
-   computed: {
-
   },
   setup() {
     const products = ref([]);
@@ -62,8 +59,8 @@ export default {
     function init() {
       products.value = store.getters.$productsOnCard;
     }
-    function formatedNumber(e){
-        let formato = {
+    function formatedNumber(e) {
+      let formato = {
         minimumFractionDigits: 2,
         style: "currency",
         currency: "BRL",
@@ -76,16 +73,16 @@ export default {
       products,
       formatedNumber,
       productsOnCard: computed(() => store.getters.$productsOnCard),
-      totalProducts: computed(() =>{
-         let total = 0
-        
-        if(store.getters.$productsOnCard.length > 0){
-           for(let prod of store.getters.$productsOnCard){
-               total += prod.preco
-           }
+      totalProducts: computed(() => {
+        let total = 0;
+
+        if (store.getters.$productsOnCard.length > 0) {
+          for (let prod of store.getters.$productsOnCard) {
+            total += prod.preco;
+          }
         }
-        return formatedNumber(total)
-      })
+        return formatedNumber(total);
+      }),
     };
   },
 };
@@ -95,7 +92,7 @@ export default {
 .home-template {
   padding: 0.7rem;
   .description {
-      margin-bottom: 1rem;
+    margin-bottom: 1rem;
     .title {
       margin: 0.5rem 0;
       span {
@@ -124,8 +121,8 @@ export default {
             }
           }
         }
-        .values>div{
-            margin: .8rem 0;
+        .values > div {
+          margin: 0.8rem 0;
         }
 
         figure {
@@ -150,13 +147,13 @@ export default {
     justify-content: center;
   }
 
-  .total{
-      padding: 1.5rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 1.5em;
-      font-weight: 600;
+  .total {
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5em;
+    font-weight: 600;
   }
 }
 </style>
