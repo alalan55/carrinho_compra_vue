@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <figure>
-      <img :src="produto.img" alt="" />
+      <img :src="produto.img" alt="{{produdo.nome}}" />
     </figure>
     <div class="descriptions">
       <div class="valor">
